@@ -1,0 +1,12 @@
+{
+  "name": "DAPproject",
+  "displayName": "DAPproject",
+  "expo": {
+    "name": "DAPproject",
+    "slug": "DAPproject",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
