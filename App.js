@@ -4,17 +4,15 @@ import { Image, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'reac
 import logo from './assets/Ace_of_spades.svg.png'
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import HomeScreen from './Screens/HomeScreen.js'
+import styles from './styles.js'
 
 export default function App() {
-
-  state = {
-    numTeams: 0
-  }
 
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName = 'Home' headerMode={false}>
-        <Stack.Screen name = 'Home' component = {HomeScreen} options={{ title: 'Game Title' }} />
+        <Stack.Screen name = 'Home' component = {HomeScreen} />
         <Stack.Screen name = 'NumberTeams' component = {NumberTeamsScreen} />
         <Stack.Screen name = 'EnterTeams' component = {EnterTeamsScreen} />
         <Stack.Screen name = 'Packs' component = {PacksScreen} />
@@ -27,8 +25,9 @@ export default function App() {
   );
 }
 
-const Stack = createStackNavigator();
+export const Stack = createStackNavigator();
 
+/**
 function HomeScreen({ navigation }) {
   return (
     <View style={styles.container}>
@@ -42,6 +41,14 @@ function HomeScreen({ navigation }) {
       <StatusBar style="auto" />
     </View>
   );
+}
+*/
+
+function HomeToNumberTeams({ navigation }) {
+  return (
+  <TouchableOpacity onPress = {() => navigation.navigate('NumberTeams')} style = {styles.button} >
+            <Text style = {styles.buttonText}>Start Game</Text>
+            </TouchableOpacity>)
 }
 
 function NumberTeamsScreen({ navigation }) {
@@ -58,14 +65,10 @@ function NumberTeamsScreen({ navigation }) {
 
       <TextInput style = {styles.textInput}
         label = "Number of Teams"
-        onChangeText = {text => setText(text)} 
-        value = {value} />
+        onChangeText = {text => setText(text)}
+      />
 
-      {/*
-       Submit editing 
-             <Text> {value} </Text>
-
-      */}
+      <Text> {value} </Text>
 
       <TouchableOpacity onPress = {() => navigation.navigate('EnterTeams')} style = {styles.button} >
         <Text style = {styles.buttonText}> Next </Text>
@@ -168,6 +171,9 @@ function GameOverScreen({ navigation }) {
 
 const bgColor = 'rgba(220,20,60,.75)'
 
+export {HomeToNumberTeams};
+
+/**
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -203,3 +209,4 @@ const styles = StyleSheet.create({
     borderWidth: 4,
   },
 });
+*/
