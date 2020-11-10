@@ -8,7 +8,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 export default function App() {
 
   state = {
-    numTeams: 0
+    numTeams: 08
   }
 
   return (
